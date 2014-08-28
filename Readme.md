@@ -29,6 +29,8 @@ var media = new THB_MediaSelector( {
 } );
 
 media.open();
+// You can pass an array of attachments IDs, to pre-select them: media.open( [ 23, 145 ] );
+// More than one value passed will only work if the 'multiple' option has been set to TRUE.
 ~~~~
 
 ## Options
