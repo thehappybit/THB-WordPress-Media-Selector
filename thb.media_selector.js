@@ -73,37 +73,13 @@
 		 * @param  {Array} ids An array of attachment IDs.
 		 */
 		self.open = function( ids ) {
-			var stateOptions = {
-				"defaults": {
-					id:         "library",
-					multiple:   self.options.multiple,
-					describe:   false,
-					toolbar:    "select",
-					content:    "upload",
-					router:     "browse",
-					menu:       "default",
-					searchable: true,
-					filterable: false,
-					sortable:   true,
-					contentUserSetting: false,
-					syncSelection: false,
-					title: self.options.title,
-				}
-			};
-
-			if ( ids && ids.length && ids.length ) {
-				stateOptions.defaults.content = "browse";
-			}
-
-			var THBUploadController = wp.media.controller.Library.extend( stateOptions );
-
 			self.frame = wp.media( {
-				states: [
-					new THBUploadController( {
-						library: wp.media.query( { type: self.options.type } )
-					} )
-				],
-				button: { text: self.options.button }
+				title: self.options.title,
+				button: { text: self.options.button },
+				library: {
+					type: self.options.type
+				},
+				multiple: self.options.multiple
 			} );
 
 			self.frame.on( "open", function() {
